@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>料金プラン | 家族物語舎</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf6ee;
+    --bg-card:#fffdf8;
+    --ink:#3d2e22;
+    --sub:#8d7a68;
+    --accent:#c8703f;
+    --accent-soft:#f1ded0;
+    --line:#e8ddc9;
+    --max:1040px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px;}
+  h1,h2,h3{font-family:"Shippori Mincho",serif;}
+
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,246,238,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;}
+  .logo{font-family:"Shippori Mincho",serif;font-size:20px;font-weight:600;letter-spacing:0.06em;display:flex;align-items:center;gap:10px;}
+  .logo-mark{width:26px;height:26px;flex-shrink:0;}
+  nav{display:flex;gap:30px;font-size:14px;}
+  nav a{color:var(--sub);transition:color .2s;}
+  nav a:hover, nav a.active{color:var(--ink);}
+  @media (max-width:600px){ nav{gap:16px;} nav a{font-size:12.5px;} }
+
+  .btn{display:inline-block;padding:15px 34px;font-size:14px;letter-spacing:0.05em;border-radius:100px;transition:all .2s;}
+  .btn.primary{background:var(--accent);color:#fff;}
+  .btn.primary:hover{background:#b25f34;}
+
+  .page-hero{padding:80px 0 56px;text-align:center;border-top:none;}
+  .page-hero .eyebrow{font-size:13px;letter-spacing:0.2em;color:var(--accent);font-weight:700;margin-bottom:20px;}
+  .page-hero h1{font-size:clamp(26px,4.5vw,38px);margin:0 0 16px;}
+  .page-hero p{color:var(--sub);font-size:15px;max-width:560px;margin:0 auto;}
+
+  section{padding:80px 0;border-top:1px solid var(--line);}
+  .section-head{text-align:center;margin-bottom:52px;}
+  .section-head .num{font-size:12px;color:var(--accent);letter-spacing:0.2em;font-weight:700;margin-bottom:12px;}
+  .section-head h2{font-size:clamp(22px,4vw,30px);margin:0;}
+  .section-head p{color:var(--sub);max-width:560px;margin:16px auto 0;font-size:15px;}
+
+  /* Plans */
+  .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;}
+  .plan-card{
+    background:var(--bg-card);border:1px solid var(--line);border-radius:20px;
+    padding:40px 30px;text-align:left;position:relative;
+  }
+  .plan-card.recommend{border-color:var(--accent);box-shadow:0 8px 28px rgba(200,112,63,0.15);}
+  .plan-card .badge{
+    position:absolute;top:-14px;left:30px;background:var(--accent);color:#fff;
+    font-size:11px;letter-spacing:0.1em;padding:6px 14px;border-radius:100px;font-weight:700;
+  }
+  .plan-card .plan-name{font-family:"Shippori Mincho",serif;font-size:20px;font-weight:600;margin-bottom:6px;}
+  .plan-card .plan-sub{font-size:13px;color:var(--sub);margin-bottom:20px;}
+  .plan-card .plan-price{font-size:32px;font-weight:700;margin-bottom:6px;}
+  .plan-card .plan-price span{font-size:13px;font-weight:400;color:var(--sub);margin-left:4px;}
+  .plan-card .plan-note{font-size:12.5px;color:var(--sub);margin-bottom:24px;}
+  .plan-card ul{list-style:none;margin:0;padding:0;}
+  .plan-card li{font-size:14px;padding:10px 0;border-top:1px solid var(--line);display:flex;gap:8px;}
+  .plan-card li:first-child{border-top:none;}
+  .plan-card li::before{content:"○";color:var(--accent);flex-shrink:0;}
+
+  /* Add-ons */
+  .addons{
+    background:var(--bg-card);border:1px solid var(--line);border-radius:20px;
+    padding:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;
+  }
+  .addon{}
+  .addon .addon-label{font-size:13px;letter-spacing:0.1em;color:var(--accent);font-weight:700;margin-bottom:10px;}
+  .addon .addon-price{font-size:22px;font-weight:700;margin-bottom:8px;}
+  .addon .addon-desc{font-size:13.5px;color:var(--sub);}
+
+  /* Standard feature note */
+  .standard-note{
+    background:var(--accent-soft);border-radius:16px;padding:28px 32px;
+    text-align:center;font-size:14.5px;color:var(--ink);
+  }
+  .standard-note b{color:var(--accent);}
+
+  .note-block{font-size:13.5px;color:var(--sub);max-width:680px;margin:32px auto 0;text-align:center;}
+
+  .contact{text-align:center;}
+  .contact p{color:var(--sub);max-width:480px;margin:0 auto 32px;}
+
+  footer{padding:56px 0 40px;border-top:1px solid var(--line);text-align:center;}
+  footer .sister{
+    font-size:13px;color:var(--sub);margin-bottom:18px;
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--bg-card);border:1px solid var(--line);
+    padding:10px 20px;border-radius:100px;
+  }
+  footer .sister a{color:var(--accent);font-weight:700;}
+  footer .copyright{font-size:12px;color:var(--sub);letter-spacing:0.03em;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="index.html">
+      <svg class="logo-mark" viewBox="0 0 100 100" fill="none">
+        <path d="M20 78 L20 30 Q20 22 28 22 L72 22 Q80 22 80 30 L80 78" stroke="#3d2e22" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M50 22 L50 78" stroke="#c8703f" stroke-width="4.5" stroke-linecap="round"/>
+        <path d="M28 40 L44 40 M28 52 L44 52 M56 40 L72 40 M56 52 L72 52" stroke="#3d2e22" stroke-width="3.2" stroke-linecap="round"/>
+      </svg>
+      家族物語舎
+    </a>
+    <nav>
+      <a href="index.html#concept">コンセプト</a>
+      <a href="index.html#ways">取材方法</a>
+      <a href="price.html" class="active">料金</a>
+      <a href="index.html#contact">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow">PRICE</div>
+    <h1>料金プラン</h1>
+    <p>取材方法によって3つのプランからお選びいただけます。部数やページ数はご希望に合わせて調整できます。</p>
+  </div>
+</section>
+
+<section style="border-top:none;padding-top:0;">
+  <div class="wrap">
+    <div class="plans">
+      <div class="plan-card">
+        <div class="plan-name">質問シート形式</div>
+        <div class="plan-sub">ご自身のペースで書いていただく形式</div>
+        <div class="plan-price">¥50,000<span>〜</span></div>
+        <div class="plan-note">約30の質問シートをお渡しします</div>
+        <ul>
+          <li>質問シートの作成・お渡し</li>
+          <li>原稿の執筆・編集</li>
+          <li>冊子デザイン・製本</li>
+          <li>ダイジェスト映像+QRコード</li>
+        </ul>
+      </div>
+      <div class="plan-card recommend">
+        <div class="badge">人気</div>
+        <div class="plan-name">オンライン取材形式</div>
+        <div class="plan-sub">ビデオ通話でインタビュー</div>
+        <div class="plan-price">¥80,000<span>〜</span></div>
+        <div class="plan-note">遠方のご家族にもおすすめ</div>
+        <ul>
+          <li>オンラインインタビュー(1〜2回)</li>
+          <li>原稿の執筆・編集</li>
+          <li>冊子デザイン・製本</li>
+          <li>ダイジェスト映像+QRコード</li>
+        </ul>
+      </div>
+      <div class="plan-card">
+        <div class="plan-name">訪問取材形式</div>
+        <div class="plan-sub">ご自宅に伺ってインタビュー</div>
+        <div class="plan-price">¥120,000<span>〜</span></div>
+        <div class="plan-note">+ 交通費実費</div>
+        <ul>
+          <li>訪問インタビュー(1〜2回)</li>
+          <li>写真撮影</li>
+          <li>原稿の執筆・編集</li>
+          <li>冊子デザイン・製本</li>
+          <li>ダイジェスト映像+QRコード</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="num">OPTIONS</div>
+      <h2>部数・ページ数の追加</h2>
+    </div>
+    <div class="addons">
+      <div class="addon">
+        <div class="addon-label">部数追加</div>
+        <div class="addon-price">¥2,000〜3,000<span style="font-size:13px;color:var(--sub);font-weight:400;"> / 1冊</span></div>
+        <div class="addon-desc">親族に配る分など、追加の部数をご希望の場合。</div>
+      </div>
+      <div class="addon">
+        <div class="addon-label">ページ数追加</div>
+        <div class="addon-price">¥5,000〜<span style="font-size:13px;color:var(--sub);font-weight:400;"> / 10ページ</span></div>
+        <div class="addon-desc">お話が多い方、写真を多く載せたい方向け。</div>
+      </div>
+    </div>
+    <div class="standard-note" style="margin-top:24px;">
+      <b>ダイジェスト映像+QRコード</b>は、全プランに標準でお付けしています。
+    </div>
+    <p class="note-block">※ 上記は目安価格です。ページ数・部数・取材回数により変動します。正式な金額はお見積りにてご案内します。</p>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="num">CONTACT</div>
+      <h2>お問い合わせ</h2>
+    </div>
+    <p>まずはお気軽にご相談ください。ご予算やご希望に合わせてお見積りいたします。</p>
+    <a href="mailto:rafael.shimizu1998@gmail.com" class="btn primary">rafael.shimizu1998@gmail.com</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="sister">
+      家族物語舎は <a href="https://shimizurafael.com" target="_blank" rel="noopener">Hiroshima Frame Studio</a> の系列ブランドです
+    </div>
+    <div class="copyright">&copy; 2026 家族物語舎. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
