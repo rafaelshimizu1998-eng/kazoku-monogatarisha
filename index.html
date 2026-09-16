@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>家族物語舎 | おじいちゃん・おばあちゃんの人生、聞かせて</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf6ee;
+    --bg-card:#fffdf8;
+    --ink:#3d2e22;
+    --sub:#8d7a68;
+    --accent:#c8703f;
+    --accent-soft:#f1ded0;
+    --line:#e8ddc9;
+    --max:1040px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px;}
+  h1,h2,h3{font-family:"Shippori Mincho",serif;}
+
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,246,238,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;}
+  .logo{font-family:"Shippori Mincho",serif;font-size:20px;font-weight:600;letter-spacing:0.06em;display:flex;align-items:center;gap:10px;}
+  .logo-mark{width:26px;height:26px;flex-shrink:0;}
+  nav{display:flex;gap:30px;font-size:14px;}
+  nav a{color:var(--sub);transition:color .2s;}
+  nav a:hover{color:var(--ink);}
+  @media (max-width:600px){ nav{gap:16px;} nav a{font-size:12.5px;} }
+
+  .hero{padding:100px 0 90px;text-align:center;}
+  .hero .eyebrow{font-size:13px;letter-spacing:0.2em;color:var(--accent);font-weight:700;margin-bottom:22px;}
+  .hero h1{font-size:clamp(28px,5vw,46px);font-weight:700;margin:0 0 24px;line-height:1.6;}
+  .hero h1 .em{color:var(--accent);}
+  .hero p{color:var(--sub);font-size:16px;max-width:520px;margin:0 auto;}
+  .hero-cta{margin-top:40px;display:inline-flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+  .btn{display:inline-block;padding:15px 34px;font-size:14px;letter-spacing:0.05em;border-radius:100px;transition:all .2s;}
+  .btn.primary{background:var(--accent);color:#fff;}
+  .btn.primary:hover{background:#b25f34;}
+  .btn.ghost{border:1px solid var(--ink);color:var(--ink);}
+  .btn.ghost:hover{background:var(--ink);color:#fff;}
+
+  section{padding:90px 0;border-top:1px solid var(--line);}
+  .section-head{text-align:center;margin-bottom:56px;}
+  .section-head .num{font-size:12px;color:var(--accent);letter-spacing:0.2em;font-weight:700;margin-bottom:12px;}
+  .section-head h2{font-size:clamp(24px,4vw,32px);margin:0;}
+  .section-head p{color:var(--sub);max-width:560px;margin:16px auto 0;font-size:15px;}
+
+  /* Concept */
+  .concept-body{max-width:680px;margin:0 auto;text-align:center;color:var(--ink);font-size:16px;}
+  .concept-body p{margin:0 0 22px;}
+  .concept-body .highlight{background:linear-gradient(transparent 60%, var(--accent-soft) 60%);}
+
+  /* Ways to collect */
+  .ways{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;}
+  .way-card{background:var(--bg-card);border:1px solid var(--line);border-radius:16px;padding:36px 28px;text-align:left;}
+  .way-card .tag{font-size:12px;letter-spacing:0.15em;color:var(--accent);font-weight:700;margin-bottom:14px;}
+  .way-card h3{font-size:19px;margin:0 0 12px;font-weight:600;}
+  .way-card p{color:var(--sub);font-size:14px;margin:0;}
+
+  /* Feature strip */
+  .feature-strip{background:var(--accent-soft);border-radius:20px;padding:48px 40px;text-align:center;}
+  .feature-strip .tag{font-size:12px;letter-spacing:0.15em;color:var(--accent);font-weight:700;margin-bottom:16px;}
+  .feature-strip h3{font-size:clamp(20px,3vw,26px);margin:0 0 16px;}
+  .feature-strip p{color:var(--ink);opacity:0.8;max-width:560px;margin:0 auto;font-size:15px;}
+
+  /* Steps */
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;}
+  .step{padding:32px 26px;border-left:1px solid var(--line);}
+  .step:first-child{border-left:none;}
+  .step .stepnum{font-family:"Shippori Mincho",serif;font-size:26px;color:var(--accent);margin-bottom:10px;}
+  .step h4{font-size:15px;margin:0 0 8px;font-weight:700;}
+  .step p{font-size:13px;color:var(--sub);margin:0;line-height:1.7;}
+  @media (max-width:700px){ .step{border-left:none;border-top:1px solid var(--line);} .step:first-child{border-top:none;} }
+
+  /* Sample notice */
+  .sample-notice{background:var(--bg-card);border:1px dashed var(--line);border-radius:16px;padding:36px;text-align:center;color:var(--sub);font-size:14px;}
+
+  /* Contact */
+  .contact{text-align:center;}
+  .contact p{color:var(--sub);max-width:480px;margin:0 auto 32px;}
+
+  footer{padding:56px 0 40px;border-top:1px solid var(--line);text-align:center;}
+  footer .sister{
+    font-size:13px;color:var(--sub);margin-bottom:18px;
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--bg-card);border:1px solid var(--line);
+    padding:10px 20px;border-radius:100px;
+  }
+  footer .sister a{color:var(--accent);font-weight:700;}
+  footer .copyright{font-size:12px;color:var(--sub);letter-spacing:0.03em;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo">
+      <svg class="logo-mark" viewBox="0 0 100 100" fill="none">
+        <path d="M20 78 L20 30 Q20 22 28 22 L72 22 Q80 22 80 30 L80 78" stroke="#3d2e22" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M50 22 L50 78" stroke="#c8703f" stroke-width="4.5" stroke-linecap="round"/>
+        <path d="M28 40 L44 40 M28 52 L44 52 M56 40 L72 40 M56 52 L72 52" stroke="#3d2e22" stroke-width="3.2" stroke-linecap="round"/>
+      </svg>
+      家族物語舎
+    </div>
+    <nav>
+      <a href="#concept">コンセプト</a>
+      <a href="#ways">取材方法</a>
+      <a href="price.html">料金</a>
+      <a href="#contact">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="border-top:none;">
+  <div class="wrap">
+    <div class="eyebrow">FAMILY STORY BOOK & VIDEO</div>
+    <h1>おじいちゃん・おばあちゃんの<br><span class="em">人生、聞かせて。</span></h1>
+    <p>家族の記憶を、手のひらサイズの冊子と映像にして残す。<br>家族物語舎(かぞくものがたりしゃ)</p>
+    <div class="hero-cta">
+      <a href="price.html" class="btn primary">料金プランを見る</a>
+      <a href="#contact" class="btn ghost">お問い合わせ</a>
+    </div>
+  </div>
+</section>
+
+<section id="concept">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="num">CONCEPT</div>
+      <h2>いつか聞けなくなる話が、あります。</h2>
+    </div>
+    <div class="concept-body">
+      <p>おじいちゃん、おばあちゃんがどんな子供時代を過ごし、何に悩み、何を大切にして生きてきたのか。<br>
+      実はちゃんと聞いたことがない、というご家庭は少なくありません。</p>
+      <p>家族物語舎は、<span class="highlight">ご本人へのインタビューをもとに、人生の物語を一冊の冊子にまとめます。</span><br>
+      取材の様子は映像にも残し、冊子のQRコードから、本人の声と表情で語られる思い出をいつでも視返せます。</p>
+      <p>孫やひ孫の世代にも届く、「自慢のおじいちゃん・おばあちゃん」の記録を、ご家族から贈りませんか。</p>
+    </div>
+  </div>
+</section>
+
+<section id="ways">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="num">WAYS TO SHARE THE STORY</div>
+      <h2>3つの取材方法</h2>
+      <p>ご本人の負担が少ない方法を選べます。訪問・オンライン・質問シートのいずれでも対応します。</p>
+    </div>
+    <div class="ways">
+      <div class="way-card">
+        <div class="tag">訪問インタビュー</div>
+        <h3>ご自宅に伺ってお話を伺います</h3>
+        <p>実際にお会いして、写真や思い出の品を見せていただきながらお話を伺います。表情や声もそのまま映像に残せます。</p>
+      </div>
+      <div class="way-card">
+        <div class="tag">オンラインインタビュー</div>
+        <h3>ビデオ通話でお話を伺います</h3>
+        <p>遠方にお住まいのご家族でも安心。画面越しに、ご自宅でリラックスした様子で話していただけます。</p>
+      </div>
+      <div class="way-card">
+        <div class="tag">質問シート形式</div>
+        <h3>ご自身のペースで書いていただけます</h3>
+        <p>約30の質問にそって、書きたい時に書きたいことを書いていただく形式です。取材の日程調整が難しい方にも。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="feature-strip">
+      <div class="tag">STANDARD FEATURE</div>
+      <h3>冊子には、ダイジェスト映像へのQRコードが付いています。</h3>
+      <p>動画編集を専門にしてきた家族物語舎だからこそ、映像はすべてのプランに標準でお付けしています。文字だけでは伝わらない、声や表情も一緒に残せます。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="num">FLOW</div>
+      <h2>ご依頼から納品までの流れ</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="stepnum">01</div>
+        <h4>お問い合わせ・ヒアリング</h4>
+        <p>ご希望の取材方法やプランについてお伺いします。</p>
+      </div>
+      <div class="step">
+        <div class="stepnum">02</div>
+        <h4>取材</h4>
+        <p>訪問・オンライン・質問シートのいずれかでお話を伺います。</p>
+      </div>
+      <div class="step">
+        <div class="stepnum">03</div>
+        <h4>執筆・編集</h4>
+        <p>お話をもとに原稿を執筆し、ダイジェスト映像も編集します。</p>
+      </div>
+      <div class="step">
+        <div class="stepnum">04</div>
+        <h4>確認・修正</h4>
+        <p>内容をご確認いただき、必要に応じて修正します。</p>
+      </div>
+      <div class="step">
+        <div class="stepnum">05</div>
+        <h4>製本・納品</h4>
+        <p>冊子を製本し、QRコード付きでお届けします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sample-notice">
+      サンプル(完成見本)は準備中です。近日公開予定です。
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="num">CONTACT</div>
+      <h2>お問い合わせ</h2>
+    </div>
+    <p>ご依頼・ご相談は下記メールアドレスまでお気軽にご連絡ください。内容に応じて詳しくお見積りいたします。</p>
+    <a href="mailto:rafael.shimizu1998@gmail.com" class="btn primary">rafael.shimizu1998@gmail.com</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="sister">
+      家族物語舎は <a href="https://shimizurafael.com" target="_blank" rel="noopener">Hiroshima Frame Studio</a> の系列ブランドです
+    </div>
+    <div class="copyright">&copy; 2026 家族物語舎. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
