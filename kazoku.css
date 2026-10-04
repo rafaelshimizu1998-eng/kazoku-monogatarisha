@@ -225,3 +225,18 @@ nav a,.logo{white-space:nowrap;}
 @media (max-width:760px){.monitor{padding:32px 20px;}.monitor-lead{font-size:15.5px;}.monitor-lead br{display:none;}.monitor-lead{text-align:left;}}
 .monitor-limit{display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:15px;letter-spacing:.08em;padding:7px 20px;border-radius:100px;margin-bottom:22px;}
 .mp-sub{font-size:14.5px;color:var(--accent-dark);font-weight:700;}
+.sample-price{background:var(--bg-card);border:1.5px solid var(--line);border-radius:16px;padding:22px 24px;margin:0 0 26px;}
+.spr-title{font-family:"Shippori Mincho",serif;font-weight:600;font-size:17px;color:var(--ink) !important;margin:0 0 12px !important;}
+.sample-price table{width:100%;border-collapse:collapse;}
+.sample-price th,.sample-price td{padding:11px 0;border-bottom:1px solid var(--line);vertical-align:top;}
+.sample-price th{text-align:left;font-weight:500;font-size:15px;}
+.sample-price th small{display:block;font-size:12.5px;color:var(--sub);font-weight:400;margin-top:2px;line-height:1.6;}
+.sample-price td{text-align:right;white-space:nowrap;font-size:15.5px;padding-left:12px;}
+.spr-note{font-size:13px !important;margin:10px 0 0 !important;}
+.spr-note a{color:var(--accent-dark);text-decoration:underline;}
+.sample-price td{width:1%;}
+.spr-total{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-top:14px;}
+.spr-total span{font-weight:700;font-size:15px;}
+.spr-total strong{text-align:right;font-family:"Shippori Mincho",serif;font-weight:800;font-size:26px;color:var(--accent-dark);line-height:1.3;}
+.spr-total small{display:block;font-family:"Noto Sans JP",sans-serif;font-size:13px;font-weight:500;color:var(--sub);}
+@media (max-width:760px){.sample-price{padding:20px 18px;}}
