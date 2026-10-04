@@ -261,3 +261,6 @@ nav a,.logo{white-space:nowrap;}
 .cf-mail{text-align:center;font-size:13.5px;margin:18px 0 0 !important;}
 .cf-mail a{color:var(--accent-dark);text-decoration:underline;word-break:break-all;}
 @media (max-width:760px){.cform{padding:26px 18px;border-radius:18px;}}
+.mn-list{margin:0 0 14px;padding-left:1.2em;}
+.mn-list li{font-size:15px;line-height:1.85;color:var(--ink);margin-bottom:4px;}
+.monitor-note .mn-label + p{margin-top:0;}
