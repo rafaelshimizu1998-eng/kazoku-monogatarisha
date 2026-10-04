@@ -220,7 +220,7 @@
         <span class="mn-label">注意事項</span>
         <p>ホームページに掲載する際は、お名前など個人が特定される情報は、仮名に変更させていただきます。</p>
       </div>
-      <a href="mailto:hiroshimaframestudio@gmail.com?subject=家族物語舎モニター応募" class="btn primary">モニターに応募する<span class="arr">→</span></a>
+      <a href="#contact" class="btn primary" data-purpose="モニター応募">モニターに応募する<span class="arr">→</span></a>
     </div>
   </div>
 </section>
@@ -231,8 +231,48 @@
       <div class="num">CONTACT</div>
       <h2>お問い合わせ</h2>
     </div>
-    <p class="reveal">ご依頼・ご相談は下記メールアドレスまでお気軽にご連絡ください。内容に応じて詳しくお見積りいたします。</p>
-    <a href="mailto:hiroshimaframestudio@gmail.com?subject=家族物語舎へのお問い合わせ" class="btn primary reveal">hiroshimaframestudio@gmail.com</a>
+    <p class="reveal">ご依頼・ご相談は下のフォームからお気軽にご連絡ください。内容に応じて詳しくお見積りいたします。</p>
+    <form class="cform reveal" action="https://formspree.io/f/maenrzra" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="【家族物語舎】ホームページからのお問い合わせ">
+      <input type="text" name="_gotcha" class="cf-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="cf-row">
+        <label for="cf-name">お名前<span class="req">必須</span></label>
+        <input id="cf-name" name="お名前" type="text" autocomplete="name" required>
+      </div>
+      <div class="cf-row">
+        <label for="cf-email">メールアドレス<span class="req">必須</span></label>
+        <input id="cf-email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="cf-row">
+        <label for="cf-tel">電話番号<span class="opt">任意</span></label>
+        <input id="cf-tel" name="電話番号" type="tel" autocomplete="tel">
+      </div>
+      <div class="cf-row">
+        <label for="cf-purpose">ご用件<span class="req">必須</span></label>
+        <select id="cf-purpose" name="ご用件" required>
+          <option value="">選んでください</option>
+          <option>ご依頼・お見積りの相談</option>
+          <option>モニター応募</option>
+          <option>その他のお問い合わせ</option>
+        </select>
+      </div>
+      <div class="cf-row">
+        <label for="cf-plan">ご希望の取材方法<span class="opt">任意</span></label>
+        <select id="cf-plan" name="ご希望の取材方法">
+          <option value="">未定・相談したい</option>
+          <option>訪問取材</option>
+          <option>オンライン取材</option>
+          <option>質問シート</option>
+        </select>
+      </div>
+      <div class="cf-row">
+        <label for="cf-msg">ご相談内容<span class="req">必須</span></label>
+        <textarea id="cf-msg" name="ご相談内容" rows="6" required placeholder="例）祖母の自分史を作りたいです。広島市在住で、訪問取材を希望しています。"></textarea>
+      </div>
+      <button type="submit" class="btn primary cf-submit">送信する<span class="arr">→</span></button>
+      <p class="cf-status" role="status" aria-live="polite"></p>
+      <p class="cf-mail">メールでのご連絡も受け付けています<br><a href="mailto:hiroshimaframestudio@gmail.com?subject=家族物語舎へのお問い合わせ">hiroshimaframestudio@gmail.com</a></p>
+    </form>
   </div>
 </section>
 </main>
