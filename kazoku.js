@@ -1,0 +1,23 @@
+(function(){
+  var $ = function(s){return document.querySelector(s);};
+
+  requestAnimationFrame(function(){ setTimeout(function(){ document.body.classList.add('loaded'); }, 60); });
+
+  var header = $('header'), bar = $('#progress'), cta = $('#stickyCta'), hero = $('.hero, .page-hero');
+  function onScroll(){
+    var y = window.scrollY, h = document.documentElement.scrollHeight - innerHeight;
+    if(bar) bar.style.transform = 'scaleX(' + (h > 0 ? y / h : 0) + ')';
+    header.classList.toggle('scrolled', y > 20);
+    if(cta && hero){
+      var pastHero = y > hero.offsetHeight - 120;
+      var atContact = $('#contact') && $('#contact').getBoundingClientRect().top < innerHeight * .8;
+      cta.classList.toggle('show', pastHero && !atContact);
+    }
+  }
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.15, rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.reveal,.steps').forEach(function(el){ io.observe(el); });
+})();
