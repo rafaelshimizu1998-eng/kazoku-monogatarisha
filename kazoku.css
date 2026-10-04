@@ -210,7 +210,7 @@ footer .copyright{font-size:12.5px;color:var(--sub);}
 .sample-note strong{color:var(--accent-dark);}
 @media (max-width:760px){.sample{grid-template-columns:1fr;gap:36px;}.sample-book{max-width:300px;margin:0 auto;}.sample-body h3{font-size:19px;}}
 nav a,.logo{white-space:nowrap;}
-@media (max-width:640px){nav a[href="#concept"],nav a[href="#ways"]{display:none;}}
+@media (max-width:640px){nav a[href$="#concept"],nav a[href$="#ways"]{display:none;}}
 
 /* monitor */
 .monitor{max-width:720px;margin:0 auto;text-align:center;background:var(--bg-card);border:1.5px solid var(--accent-soft);border-radius:22px;padding:44px 40px;box-shadow:var(--shadow);}
