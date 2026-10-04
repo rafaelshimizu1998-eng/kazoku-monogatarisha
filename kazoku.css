@@ -223,3 +223,5 @@ nav a,.logo{white-space:nowrap;}
 .mn-label{display:block;font-size:13px;font-weight:700;color:var(--accent-dark);letter-spacing:.1em;margin-bottom:4px;}
 .monitor-note p{margin:0;font-size:15.5px;line-height:1.9;color:var(--ink);}
 @media (max-width:760px){.monitor{padding:32px 20px;}.monitor-lead{font-size:15.5px;}.monitor-lead br{display:none;}.monitor-lead{text-align:left;}}
+.monitor-limit{display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:15px;letter-spacing:.08em;padding:7px 20px;border-radius:100px;margin-bottom:22px;}
+.mp-sub{font-size:14.5px;color:var(--accent-dark);font-weight:700;}
