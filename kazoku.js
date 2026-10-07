@@ -26,6 +26,9 @@
 (function(){
   var f=document.querySelector('.cform'); if(!f) return;
   var st=f.querySelector('.cf-status'), btn=f.querySelector('.cf-submit'), purpose=f.querySelector('#cf-purpose');
+  document.querySelectorAll('a[href^="mailto:"]').forEach(function(a){
+    a.addEventListener('click',function(){ if(window.gtag) gtag('event','contact_mail_click',{page_path: location.pathname}); });
+  });
   document.querySelectorAll('[data-purpose]').forEach(function(a){
     a.addEventListener('click',function(){ if(purpose) purpose.value=a.getAttribute('data-purpose'); });
   });
@@ -39,7 +42,9 @@
     btn.disabled=true; st.textContent='送信しています…';
     fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}})
       .then(function(r){
-        if(r.ok){ f.reset(); st.textContent='送信しました。ありがとうございます。2〜3日以内にメールでご返信します。'; st.classList.add('ok'); }
+        if(r.ok){
+          if(window.gtag) gtag('event','generate_lead',{form_purpose: purpose ? purpose.value : '', page_path: location.pathname});
+          f.reset(); st.textContent='送信しました。ありがとうございます。2〜3日以内にメールでご返信します。'; st.classList.add('ok'); }
         else { throw 0; }
       })
       .catch(function(){ st.textContent='送信できませんでした。お手数ですが、下のメールアドレスへ直接ご連絡ください。'; st.classList.add('err'); })
